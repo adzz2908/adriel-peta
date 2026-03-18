@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register | CSS PETA</title>
+<style>
+body{
+  background:#020617;
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:monospace;
+}
+form{
+  background:#1e293b;
+  padding:2rem;
+  border-radius:15px;
+  border:1px solid #333;
+  width:320px;
+  text-align:center;
+  box-shadow:0 0 20px #00d4ff,0 0 40px #00d4ff,0 0 60px #00d4ff;
+}
+.glowTitle{
+  font-size:32px;
+  color:#00d4ff;
+  text-shadow:0 0 5px #00d4ff,0 0 15px #00d4ff,0 0 30px #00d4ff;
+  animation:glow 1.5s ease-in-out infinite alternate;
+}
+.glowButton{
+  padding:10px 20px;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+  font-family:monospace;
+  background:#00d4ff;
+  color:black;
+  box-shadow:0 0 10px #00d4ff,0 0 20px #00d4ff,0 0 40px #00d4ff;
+  animation:buttonGlow 1.5s ease-in-out infinite alternate;
+  margin-top:10px;
+}
+#registerMsg{
+  font-size:24px;
+  font-weight:bold;
+  opacity:0;
+  transition:opacity 0.5s;
+  margin-bottom:15px;
+}
+input{
+  width:90%;
+  padding:12px;
+  margin:10px 0;
+  border-radius:8px;
+  border:1px solid #00d4ff;
+  background:#0f172a;
+  color:#f8fafc;
+  font-family:monospace;
+  text-shadow:0 0 5px #00d4ff;
+  box-shadow:0 0 10px #00d4ff,0 0 20px #00d4ff,0 0 40px #00d4ff;
+  transition:0.3s;
+}
+input:focus{
+  outline:none;
+  border-color:#00a6cc;
+  box-shadow:0 0 15px #00d4ff,0 0 30px #00d4ff,0 0 50px #00d4ff;
+}
+@keyframes glow{
+  from {text-shadow:0 0 5px #00d4ff,0 0 15px #00d4ff;}
+  to {text-shadow:0 0 20px #00d4ff,0 0 40px #00d4ff,0 0 60px #00d4ff;}
+}
+@keyframes buttonGlow{
+  from{box-shadow:0 0 10px #00d4ff,0 0 20px #00d4ff;}
+  to{box-shadow:0 0 20px #00d4ff,0 0 40px #00d4ff,0 0 60px #00d4ff;}
+}
+</style>
+</head>
+<body>
+<form id="registerForm">
+  <div id="registerMsg">Register message</div>
+  <h2 class="glowTitle">Register</h2>
+  <input type="email" id="username" placeholder="Email" required>
+  <input type="password" id="password" placeholder="Password" required>
+  <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+  <br>
+  <button type="submit" class="glowButton">Register</button>
+  <br><br>
+  <button type="button" id="loginBtn" class="glowButton">Login</button>
+</form>
+
+<!-- Firebase SDK -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.1/firebase-auth.js";
+
+// Firebase config
+const firebaseConfig = {
+  apiKey: "AIzaSyA4BMduzAUiqHMNCoha_DsDmBGnYeBz3Ww",
+  authDomain: "css-peta.firebaseapp.com",
+  projectId: "css-peta",
+  storageBucket: "css-peta.firebasestorage.app",
+  messagingSenderId: "470969817365",
+  appId: "1:470969817365:web:7ef0585687c1cb7cbdb11c",
+  measurementId: "G-Z5J2E9VN6B"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth();
+
+const registerForm = document.getElementById("registerForm");
+const registerMsg = document.getElementById("registerMsg");
+
+registerForm.addEventListener("submit", function(e){
+  e.preventDefault();
+  registerMsg.style.opacity = 0; // clear previous message
+  const email = document.getElementById("username").value.trim();
+  const password = document.getElementById("password").value;
+  const confirm = document.getElementById("confirmPassword").value;
+
+  if(password !== confirm){
+    registerMsg.style.color = "#ff0000";
+    registerMsg.textContent = "Passwords do not match!";
+    registerMsg.style.opacity = 1;
+    return;
+  }
+
+  createUserWithEmailAndPassword(auth, email, password)
+    .then(() => {
+      registerMsg.style.color = "#00ff00";
+      registerMsg.textContent = "Register successful!";
+      registerMsg.style.opacity = 1;
+      setTimeout(() => window.location.href = "login.html", 2000);
+    })
+    .catch(error => {
+      registerMsg.style.opacity = 1;
+      registerMsg.style.color = "#ff0000";
+      switch(error.code){
+        case "auth/email-already-in-use":
+          registerMsg.textContent = "Email already registered!";
+          break;
+        case "auth/weak-password":
+          registerMsg.textContent = "Password too weak!";
+          break;
+        case "auth/invalid-email":
+          registerMsg.textContent = "Invalid email!";
+          break;
+        default:
+          registerMsg.textContent = error.message;
+      }
+    });
+});
+
+document.getElementById("loginBtn").addEventListener("click", () => {
+  window.location.href = "login.html";
+});
+</script>
+</body>
+</html>

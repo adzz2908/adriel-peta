@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Graphics</title>
+    <style>
+        :root { --primary: #d946ef; --bg: #0f172a; --text: #f8fafc; --card: #1e293b; }
+        body { background: var(--bg); color: var(--text); font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .container { max-width: 800px; margin: 0 auto; }
+        a { color: var(--primary); text-decoration: none; }
+        
+        .back-btn { display: inline-block; padding: 10px 20px; background: #333; color: white; border-radius: 5px; margin-bottom: 20px; }
+        .back-btn:hover { background: var(--primary); color: white; }
+
+        h1 { border-bottom: 2px solid var(--primary); padding-bottom: 10px; color: var(--primary); }
+        .lesson { background: var(--card); padding: 20px; margin-bottom: 20px; border-radius: 10px; border: 1px solid #334155; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="home.html" class="back-btn">← Back to Dashboard</a>
+
+        <h1>🎨 Visual Graphics & Design</h1>
+        
+        <div class="lesson">
+            <h3>2D Design & UI/UX</h3>
+            <p>User Interface (UI) design focuses on the look and layout. User Experience (UX) focuses on how it feels to use. Tools like Figma and Adobe XD are industry standards.</p>
+        </div>
+
+        <div class="lesson">
+            <h3>3D Modeling</h3>
+            <p>Creating 3D objects for games and movies. The most popular free tool is <strong>Blender</strong>.</p>
+            <ul>
+                <li><strong>Modeling:</strong> Creating the shape (mesh).</li>
+                <li><strong>Rigging:</strong> Adding "bones" to move the mesh.</li>
+                <li><strong>Rendering:</strong> Turning the 3D scene into a 2D image.</li>
+            </ul>
+        </div>
+
+        <div class="lesson">
+            <h3>Color Theory</h3>
+            <p>Understanding how colors mix and match is crucial. Complementary colors (opposites on the wheel) create high contrast and impact.</p>
+        </div>
+    </div>
+
+</body>
+</html>

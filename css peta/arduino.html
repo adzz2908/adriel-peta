@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Arduino</title>
+    <style>
+        :root { --primary: #00979d; --bg: #0f172a; --text: #f8fafc; --card: #1e293b; }
+        body { background: var(--bg); color: var(--text); font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .container { max-width: 800px; margin: 0 auto; }
+        a { color: var(--primary); text-decoration: none; }
+        
+        .back-btn { display: inline-block; padding: 10px 20px; background: #333; color: white; border-radius: 5px; margin-bottom: 20px; }
+        .back-btn:hover { background: var(--primary); color: white; }
+
+        h1 { border-bottom: 2px solid var(--primary); padding-bottom: 10px; color: var(--primary); }
+        .lesson { background: var(--card); padding: 20px; margin-bottom: 20px; border-radius: 10px; border: 1px solid #334155; }
+        code { background: #000; padding: 2px 5px; border-radius: 3px; color: #0f0; font-family: monospace; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="home.html" class="back-btn">← Back to Dashboard</a>
+
+        <h1>🤖 Arduino & Robotics</h1>
+        
+        <div class="lesson">
+            <h3>The Hardware</h3>
+            <p>An Arduino is a microcontroller—a tiny computer that can read sensors and control motors. It bridges the gap between software code and the physical world.</p>
+        </div>
+
+        <div class="lesson">
+            <h3>Basic Components</h3>
+            <ul>
+                <li><strong>LED:</strong> A light emitting diode.</li>
+                <li><strong>Resistor:</strong> Limits the flow of electricity to prevent burning out components.</li>
+                <li><strong>Breadboard:</strong> A board for prototyping circuits without soldering.</li>
+            </ul>
+        </div>
+
+        <div class="lesson">
+            <h3>The "Blink" Sketch</h3>
+            <p>This is the "Hello World" of Arduino. It turns an LED on and off.</p>
+            <pre><code>
+void loop() {
+  digitalWrite(LED_BUILTIN, HIGH); // Turn on
+  delay(1000);                     // Wait
+  digitalWrite(LED_BUILTIN, LOW);  // Turn off
+  delay(1000);                     // Wait
+}
+            </code></pre>
+        </div>
+    </div>
+
+</body>
+</html>

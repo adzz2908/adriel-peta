@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn C++</title>
+    <style>
+        :root { --primary: #00599c; --bg: #0f172a; --text: #f8fafc; --card: #1e293b; }
+        body { background: var(--bg); color: var(--text); font-family: sans-serif; padding: 20px; line-height: 1.6; }
+        .container { max-width: 800px; margin: 0 auto; }
+        a { color: var(--primary); text-decoration: none; }
+        
+        .back-btn { display: inline-block; padding: 10px 20px; background: #333; color: white; border-radius: 5px; margin-bottom: 20px; }
+        .back-btn:hover { background: var(--primary); color: white; }
+
+        h1 { border-bottom: 2px solid var(--primary); padding-bottom: 10px; color: var(--primary); }
+        .lesson { background: var(--card); padding: 20px; margin-bottom: 20px; border-radius: 10px; border: 1px solid #334155; }
+        code { background: #000; padding: 2px 5px; border-radius: 3px; color: #0f0; font-family: monospace; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <a href="home.html" class="back-btn">← Back to Dashboard</a>
+
+        <h1>⚙️ C++ Programming</h1>
+        
+        <div class="lesson">
+            <h3>Why C++?</h3>
+            <p>C++ is a high-performance language used in operating systems, browsers, and AAA games. It gives you direct control over hardware memory.</p>
+        </div>
+
+        <div class="lesson">
+            <h3>Variables</h3>
+            <p>You must declare the "type" of data a variable holds:</p>
+            <ul>
+                <li><code>int</code> - Whole numbers (e.g., 5, 100)</li>
+                <li><code>double</code> - Decimal numbers (e.g., 5.99)</li>
+                <li><code>char</code> - Single characters (e.g., 'A')</li>
+                <li><code>string</code> - Text (e.g., "Hello")</li>
+            </ul>
+        </div>
+
+        <div class="lesson">
+            <h3>Example Code</h3>
+            <pre><code>
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+  cout << "Hello World!";
+  return 0;
+}
+            </code></pre>
+        </div>
+    </div>
+
+</body>
+</html>
